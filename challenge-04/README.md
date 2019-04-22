@@ -134,18 +134,19 @@ carro.addPessoas = function(a) {
 
 carro.adicionarPessoas = function( numeroPessoas ) {
     var totalPessoas = carro.quantidadePessoas + numeroPessoas;
-                                                    
+    var pluralOuSingular1 = quantasPessoasCabem <= 1 ? ' pessoa' : ' pessoas';
+    var pluralOuSingular2 = quantasPessoasCabem <= 1 ? 'cabe' : 'cabem';
+    var pluralOuSingular3 = (carro.quantidadePessoas + numeroPessoas) <= 1 ? ' pessoa' : ' pessoas';
+
     if( carro.quantidadePessoas === carro.assentos && totalPessoas >= carro.assentos ) {
         return 'O carro está lotado';
     }
     if( totalPessoas > carro.assentos ) {
         var quantasPessoasCabem = carro.assentos - carro.quantidadePessoas;
-        var pluralOuSingular1 = quantasPessoasCabem <= 1 ? ' pessoa' : ' pessoas';
-        var pluralOuSingular2 = quantasPessoasCabem <= 1 ? 'cabe' : 'cabem';
+
         return 'Só ' + pluralOuSingular2 + ' mais ' + quantasPessoasCabem + pluralOuSingular1 + '!';
     }
     carro.quantidadePessoas += numeroPessoas;
-    var pluralOuSingular3 = carro.quantidadePessoas <= 1 ? ' pessoa' : ' pessoas';
     return 'Já temos ' + carro.quantidadePessoas + pluralOuSingular3 + ' no carro!';
 }
 /*
